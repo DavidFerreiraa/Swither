@@ -11,7 +11,11 @@ class HumidityWindCard: UIStackView {
         super.init(frame: .zero)
         self.translatesAutoresizingMaskIntoConstraints = false
         self.axis = .vertical
-        self.backgroundColor = .gray
+        self.spacing = 3
+        self.layer.cornerRadius = 10
+        self.backgroundColor = UIColor(named: "white600")
+        self.isLayoutMarginsRelativeArrangement = true
+        self.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 12, leading: 24, bottom: 12, trailing: 24)
         setupView()
     }
     
@@ -45,7 +49,7 @@ class HumidityWindCard: UIStackView {
     }()
     
     private lazy var windValueLabel: HumidityWindLabel = {
-        let label = HumidityWindLabel(text: "100m/s")
+        let label = HumidityWindLabel(text: "10Km/h")
         return label
     }()
     
