@@ -8,7 +8,7 @@
 import UIKit
 
 class HumidityWindLabel: UILabel {
-    init(text: String, font: UIFont = .systemFont(ofSize: 12, weight: .semibold), textColor: UIColor = UIColor(named: "white-primary") ?? .white) {
+    init(text: String, font: UIFont = .systemFont(ofSize: 12, weight: .semibold), textColor: UIColor = .whitePrimary) {
         super.init(frame: .zero)
         self.text = text
         self.font = font

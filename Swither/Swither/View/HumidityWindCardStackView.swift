@@ -6,14 +6,14 @@
 //
 import UIKit
 
-class HumidityWindCard: UIStackView {
+class HumidityWindCardStackView: UIStackView {
     init(){
         super.init(frame: .zero)
         self.translatesAutoresizingMaskIntoConstraints = false
         self.axis = .vertical
         self.spacing = 3
         self.layer.cornerRadius = 10
-        self.backgroundColor = UIColor(named: "white600")
+        self.backgroundColor = .grayPrimary
         self.isLayoutMarginsRelativeArrangement = true
         self.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 12, leading: 24, bottom: 12, trailing: 24)
         setupView()

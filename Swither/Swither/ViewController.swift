@@ -16,14 +16,24 @@ class ViewController: UIViewController {
         return imageView
     }() //backgroundView receive a UIImageView without frame rect
     
-    private lazy var topCardView: weatherCardView = {
-        let view = weatherCardView()
+    private lazy var topCardView: WeatherCardView = {
+        let view = WeatherCardView()
         return view
     }()
     
-    private lazy var humidityWindCard: HumidityWindCard = {
-        let card = HumidityWindCard()
+    private lazy var humidityWindCard: HumidityWindCardStackView = {
+        let card = HumidityWindCardStackView()
         return card
+    }()
+    
+    private lazy var collectionDayWeather: DayWeatherCollectionView = {
+        let collectionView = DayWeatherCollectionView()
+        return collectionView
+    }()
+    
+    private lazy var dayWeatherSection: WeatherSectionStackView = {
+        let section = WeatherSectionStackView(label: "PREVISÕES DO DIA", child: collectionDayWeather)
+        return section
     }()
     
     override func viewDidLoad() {
@@ -42,6 +52,7 @@ class ViewController: UIViewController {
         view.addSubview(backgroundView)
         view.addSubview(topCardView)
         view.addSubview(humidityWindCard)
+        view.addSubview(dayWeatherSection)
     }
     
     private func setConstraints() { //method to define constraints
@@ -63,6 +74,19 @@ class ViewController: UIViewController {
             humidityWindCard.widthAnchor.constraint(equalToConstant: 206),
             humidityWindCard.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             humidityWindCard.topAnchor.constraint(equalTo: topCardView.bottomAnchor, constant: 24)
+        ])
+        
+        NSLayoutConstraint.activate([
+            dayWeatherSection.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            dayWeatherSection.topAnchor.constraint(equalTo: humidityWindCard.bottomAnchor, constant: 30),
+            dayWeatherSection.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 35),
+            dayWeatherSection.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -35),
+        ])
+        
+        NSLayoutConstraint.activate([
+            collectionDayWeather.heightAnchor.constraint(equalToConstant: 84),
+            collectionDayWeather.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            collectionDayWeather.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])
     }
 }

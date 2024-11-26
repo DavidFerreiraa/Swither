@@ -6,7 +6,7 @@
 //
 import UIKit
 
-class weatherCardView: UIView {
+class WeatherCardView: UIView {
     init(){
         super.init(frame: .zero)
         self.translatesAutoresizingMaskIntoConstraints = false
@@ -31,7 +31,7 @@ class weatherCardView: UIView {
         label.font = .systemFont(ofSize: 70, weight: .bold)
         label.text = "27ºC"
         label.textAlignment = .left
-        label.textColor = UIColor(named: "blue-primary")
+        label.textColor = .blue100
         return label
     }()
     
