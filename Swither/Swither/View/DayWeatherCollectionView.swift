@@ -15,7 +15,6 @@ class DayWeatherCollectionView: UICollectionView {
                                            left: 12,
                                            bottom: 0,
                                            right: 12)
-        
         super.init(frame: .zero, collectionViewLayout: layout)
         self.translatesAutoresizingMaskIntoConstraints = false
         self.dataSource = self

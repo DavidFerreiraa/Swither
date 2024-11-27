@@ -9,7 +9,7 @@ import UIKit
 
 class DayWeatherCollectionViewCell: UICollectionViewCell {
     
-    static let identifier: String = "DayWeather"
+    static let identifier: String = "DayWeatherCollectionCell"
     
     private lazy var cellCard: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [hourLabel, weatherImageView, temperatureLabel])
@@ -67,11 +67,8 @@ class DayWeatherCollectionViewCell: UICollectionViewCell {
     }
     
     private func setConstraints() {
+        cellCard.setConstraintsToParent(contentView)
         NSLayoutConstraint.activate([
-            cellCard.topAnchor.constraint(equalTo: contentView.topAnchor),
-            cellCard.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            cellCard.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            cellCard.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             hourLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             temperatureLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor)
         ])
