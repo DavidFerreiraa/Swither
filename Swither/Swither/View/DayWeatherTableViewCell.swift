@@ -21,17 +21,17 @@ class DayWeatherTableViewCell: UITableViewCell {
     }
     
     private lazy var dayOfTheWeekLabel: HumidityWindLabel = {
-        let label = HumidityWindLabel(text: "TER")
+        let label = HumidityWindLabel(text: "")
         return label
     }()
     
     private lazy var minTemperatureLabel: HumidityWindLabel = {
-        let label = HumidityWindLabel(text: "min 20")
+        let label = HumidityWindLabel(text: "")
         return label
     }()
     
     private lazy var maxTemperatureLabel: HumidityWindLabel = {
-        let label = HumidityWindLabel(text: "max 20")
+        let label = HumidityWindLabel(text: "")
         return label
     }()
     
@@ -39,7 +39,6 @@ class DayWeatherTableViewCell: UITableViewCell {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFit
-        imageView.image = UIImage(named: "cloud-icon")
         return imageView
     }()
     
@@ -51,8 +50,21 @@ class DayWeatherTableViewCell: UITableViewCell {
         stackView.isLayoutMarginsRelativeArrangement = true
         stackView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 12, leading: 32, bottom: 12, trailing: 32)
         stackView.spacing = 15
+        stackView.distribution = .equalCentering
         return stackView
     }()
+    
+    func loadData(iconUrl: URL?, min: String, max: String, weekDay: String) {
+        dayOfTheWeekLabel.text = weekDay
+        minTemperatureLabel.text = "min \(min)"
+        maxTemperatureLabel.text = "max \(max)"
+        // Check if the iconUrl is valid
+        if let url = iconUrl {
+            weatherIcon.load(url: url) // Load the image from the URL
+        } else {
+            weatherIcon.image = UIImage(named: "cloud-icon") // Set the default image
+        }
+    }
     
     private func setupView() {
         self.backgroundColor = .clear
@@ -67,9 +79,9 @@ class DayWeatherTableViewCell: UITableViewCell {
     }
     
     private func setConstraints() {
-        stackView.setConstraintsToParent(contentView)
         NSLayoutConstraint.activate([
-            dayOfTheWeekLabel.widthAnchor.constraint(lessThanOrEqualToConstant: 48)
+            dayOfTheWeekLabel.widthAnchor.constraint(equalToConstant: 32),
+            weatherIcon.widthAnchor.constraint(equalToConstant: 32)
         ])
     }
 }

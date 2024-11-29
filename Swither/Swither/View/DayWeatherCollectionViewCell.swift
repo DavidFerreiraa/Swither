@@ -35,7 +35,7 @@ class DayWeatherCollectionViewCell: UICollectionViewCell {
     
     private lazy var hourLabel: HumidityWindLabel = {
         let label = HumidityWindLabel(
-            text: "12:00",
+            text: "",
             font: .systemFont(ofSize: 10, weight: .semibold))
         label.textAlignment = .center
         return label
@@ -43,7 +43,7 @@ class DayWeatherCollectionViewCell: UICollectionViewCell {
     
     private lazy var temperatureLabel: HumidityWindLabel = {
         let label = HumidityWindLabel(
-            text: "30ºC",
+            text: "",
             font: .systemFont(ofSize: 14, weight: .semibold))
         label.textAlignment = .center
         return label
@@ -52,7 +52,6 @@ class DayWeatherCollectionViewCell: UICollectionViewCell {
     private lazy var weatherImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = UIImage(named: "sun-icon")
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
@@ -64,6 +63,12 @@ class DayWeatherCollectionViewCell: UICollectionViewCell {
     
     private func setHierarchy() {
         contentView.addSubview(cellCard)
+    }
+    
+    func loadData(time: String, icon: UIImage?, temperature: String) {
+        hourLabel.text = time
+        weatherImageView.image = icon
+        temperatureLabel.text = temperature
     }
     
     private func setConstraints() {

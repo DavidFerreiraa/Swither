@@ -7,6 +7,19 @@
 import UIKit
 
 class HumidityWindCardStackView: UIStackView {
+    // Properties for city and temperature
+    var humidity: String = "" {
+        didSet {
+            humidityValueLabel.text = humidity
+        }
+    }
+    
+    var wind: String = "" {
+        didSet {
+            windValueLabel.text = wind
+        }
+    }
+    
     init(){
         super.init(frame: .zero)
         self.translatesAutoresizingMaskIntoConstraints = false
@@ -32,7 +45,7 @@ class HumidityWindCardStackView: UIStackView {
     }()
     
     private lazy var humidityValueLabel: HumidityWindLabel = {
-        let label = HumidityWindLabel(text: "1000mm")
+        let label = HumidityWindLabel(text: "")
         return label
     }()
     
@@ -49,7 +62,7 @@ class HumidityWindCardStackView: UIStackView {
     }()
     
     private lazy var windValueLabel: HumidityWindLabel = {
-        let label = HumidityWindLabel(text: "10Km/h")
+        let label = HumidityWindLabel(text: "")
         return label
     }()
     

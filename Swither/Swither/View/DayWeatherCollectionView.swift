@@ -7,6 +7,8 @@
 import UIKit
 
 class DayWeatherCollectionView: UICollectionView {
+    var data: [Current] = []
+    
     init(){
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -29,12 +31,15 @@ class DayWeatherCollectionView: UICollectionView {
 
 extension DayWeatherCollectionView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return data.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DayWeatherCollectionViewCell.identifier, for: indexPath)
-        
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DayWeatherCollectionViewCell.identifier, for: indexPath) as? DayWeatherCollectionViewCell else {
+            return UICollectionViewCell(frame: .zero)
+        }
+        let actualHourly = data[indexPath.row]
+        cell.loadData(time: actualHourly.dt.toHourFormat(), icon: UIImage(named: "sun-icon"), temperature: actualHourly.temp.tempToString())
         return cell
     }
 }

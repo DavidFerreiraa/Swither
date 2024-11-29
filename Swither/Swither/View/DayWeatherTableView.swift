@@ -8,6 +8,7 @@
 import UIKit
 
 class DayWeatherTableView: UITableView {
+    var data: [Daily] = []
     
     override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: style)
@@ -24,11 +25,18 @@ class DayWeatherTableView: UITableView {
 
 extension DayWeatherTableView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return data.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: DayWeatherTableViewCell.identifier, for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: DayWeatherTableViewCell.identifier, for: indexPath) as? DayWeatherTableViewCell else {
+            return UITableViewCell()
+        }
+        let actualDaily = data[indexPath.row]
+        let icon: String = actualDaily.weather.first?.icon ?? "03n"
+        let imageUrl = URL(string: "https://openweathermap.org/img/wn/\(icon)@2x.png")
+        
+        cell.loadData(iconUrl: imageUrl, min: String(actualDaily.temp.min.tempToString()), max: String(actualDaily.temp.max.tempToString()), weekDay: actualDaily.dt.toWeekDayName())
         return cell
     }
 }

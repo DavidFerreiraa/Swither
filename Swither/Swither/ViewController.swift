@@ -48,6 +48,7 @@ class ViewController: UIViewController {
     }()
     
     private let service = Service()
+    private var forecastResponse: OpenWeatherResponse?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,27 +57,37 @@ class ViewController: UIViewController {
             self.view.makeToast("No such API key", duration: 3.0, position: .bottom)
         }
         
-        setupView()
-        
-        LocationService.shared.getCityName { [weak self] city in
-            
-            guard let self = self else {return}
-            
-            guard let city = city else {
-                self.view.makeToast("Location not found", duration: 3.0, position: .bottom)
+        service.fetchDataByCurrentLocation {
+            (city, response) in
+            guard let response else {
+                self.view.makeToast("Can't fetch data", duration: 3.0, position: .bottom)
                 return
             }
             
-            self.service.fetchData(city: city) { [weak self] data in
-                guard let self = self else {return}
-                
-                if let data = data {
-                    print(String(describing: data))
-                } else {
-                    self.view.makeToast("Can't fetch data", duration: 3.0, position: .bottom)
-                }
+            guard let city else {
+                self.view.makeToast("Can't fetch data", duration: 3.0, position: .bottom)
+                return
+            }
+            
+            DispatchQueue.main.async {
+                self.loadData(city: city, response: response)
             }
         }
+        
+        setupView()
+    }
+    
+    private func loadData(city: City, response: OpenWeatherResponse) {
+        // Ensure UI updates happen on the main thread
+        self.topCardView.cityName = city.name
+        self.topCardView.temperature = response.current.temp.tempToString()
+        self.humidityWindCardStackView.humidity = response.current.humidity.humidityToString()
+        self.humidityWindCardStackView.wind = response.current.windSpeed.windSpeedToString()
+        self.dayWeatherCollectionView.data = response.hourly
+        self.dayWeatherTableView.data = response.daily
+        
+        self.dayWeatherCollectionView.reloadData()
+        self.dayWeatherTableView.reloadData()
     }
     
     private func setupView() {

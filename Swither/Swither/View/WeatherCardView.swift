@@ -7,7 +7,21 @@
 import UIKit
 
 class WeatherCardView: UIView {
-    init(){
+    // Properties for city and temperature
+    var cityName: String = "" {
+        didSet {
+            cityLabel.text = cityName
+        }
+    }
+    
+    var temperature: String = "" {
+        didSet {
+            temperatureLabel.text = temperature
+        }
+    }
+    
+    // Custom initializer
+    init() {
         super.init(frame: .zero)
         self.translatesAutoresizingMaskIntoConstraints = false
         self.backgroundColor = UIColor(named: "white-primary")
@@ -15,11 +29,15 @@ class WeatherCardView: UIView {
         setupView()
     }
     
+    // Required initializer for decoding (e.g., storyboards or nibs)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     private lazy var cityLabel: UILabel = {
         let label = UILabel() // infer the frame as .zero
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 20) //or you can just .systemFont(...) it will works as well
-        label.text = "São Paulo"
         label.textAlignment = .center
         label.textColor = UIColor(named: "blue-primary")
         return label
@@ -29,7 +47,6 @@ class WeatherCardView: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .systemFont(ofSize: 70, weight: .bold)
-        label.text = "27ºC"
         label.textAlignment = .left
         label.textColor = .blue100
         return label
@@ -42,10 +59,6 @@ class WeatherCardView: UIView {
         imageView.contentMode = .scaleAspectFit //respect the proportions but won't crop the image
         return imageView
     }()
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     
     private func setupView() {
         setHierarchy()
