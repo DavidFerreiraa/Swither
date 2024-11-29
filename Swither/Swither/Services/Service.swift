@@ -30,9 +30,34 @@ class Service {
         }
     }
     
+    func fetchDataByCurrentLocation(_ completion: @escaping (City?, OpenWeatherResponse?) -> Void) {
+        LocationService.shared.getCityName { [weak self] city in
+            
+            guard let self = self else {return}
+            
+            guard let city = city else {
+                print("City not found")
+                completion(nil, nil)
+                return
+            }
+            
+            fetchData(city: city) { [weak self] data in
+                guard let self = self else {return}
+                
+                if let data = data {
+                    completion(city, data)
+                    return
+                } else {
+                    completion(nil, nil)
+                    return
+                }
+            }
+        }
+    }
+    
     
     func fetchData(city: City, _ completion: @escaping (OpenWeatherResponse?) -> Void) {
-        let urlString: String = "\(baseUrl)?lat=\(city.lat)&lon=\(city.lon)&exclude=minutely,alerts&appid=\(apiKey)"
+        let urlString: String = "\(baseUrl)?lat=\(city.lat)&lon=\(city.lon)&exclude=minutely,alerts&appid=\(apiKey)&units=metrics"
 //        let urlString: String = ""
         guard let url = URL(string: urlString) else { return }
         
