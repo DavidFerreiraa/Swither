@@ -34,18 +34,11 @@ class WeatherSectionStackView: UIStackView {
     
     private func setupView() {
         setHierarchy()
-        setConstraints()
     }
     
     private func setHierarchy() {
         self.addArrangedSubview(weatherLabel)
         self.addArrangedSubview(child)
-    }
-    
-    private func setConstraints() {
-        NSLayoutConstraint.activate([
-            child.topAnchor.constraint(equalTo: weatherLabel.bottomAnchor, constant: 22),
-        ])
     }
     
     required init(coder: NSCoder) {

@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		AD742BB12CF923F400F34DBE /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = AD742BB02CF923F400F34DBE /* Toast */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		AD742B5F2CF5712B00F34DBE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -65,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD742BB12CF923F400F34DBE /* Toast in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,6 +130,7 @@
 			);
 			name = Swither;
 			packageProductDependencies = (
+				AD742BB02CF923F400F34DBE /* Toast */,
 			);
 			productName = Swither;
 			productReference = AD742B482CF5712900F34DBE /* Swither.app */;
@@ -208,6 +214,9 @@
 			);
 			mainGroup = AD742B3F2CF5712900F34DBE;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				AD742BAF2CF923F400F34DBE /* XCRemoteSwiftPackageReference "Toast-Swift" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = AD742B492CF5712900F34DBE /* Products */;
 			projectDirPath = "";
@@ -567,6 +576,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		AD742BAF2CF923F400F34DBE /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scalessec/Toast-Swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.1.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		AD742BB02CF923F400F34DBE /* Toast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AD742BAF2CF923F400F34DBE /* XCRemoteSwiftPackageReference "Toast-Swift" */;
+			productName = Toast;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = AD742B402CF5712900F34DBE /* Project object */;
 }
