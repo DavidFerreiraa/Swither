@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		AD742BB12CF923F400F34DBE /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = AD742BB02CF923F400F34DBE /* Toast */; };
+		AD742BC22CFA68DF00F34DBE /* SkeletonView in Frameworks */ = {isa = PBXBuildFile; productRef = AD742BC12CFA68DF00F34DBE /* SkeletonView */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD742BC22CFA68DF00F34DBE /* SkeletonView in Frameworks */,
 				AD742BB12CF923F400F34DBE /* Toast in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -96,6 +98,7 @@
 				AD742B4A2CF5712900F34DBE /* Swither */,
 				AD742B612CF5712B00F34DBE /* SwitherTests */,
 				AD742B6B2CF5712B00F34DBE /* SwitherUITests */,
+				AD742BC02CFA68DF00F34DBE /* Frameworks */,
 				AD742B492CF5712900F34DBE /* Products */,
 			);
 			sourceTree = "<group>";
@@ -108,6 +111,13 @@
 				AD742B682CF5712B00F34DBE /* SwitherUITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		AD742BC02CFA68DF00F34DBE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -131,6 +141,7 @@
 			name = Swither;
 			packageProductDependencies = (
 				AD742BB02CF923F400F34DBE /* Toast */,
+				AD742BC12CFA68DF00F34DBE /* SkeletonView */,
 			);
 			productName = Swither;
 			productReference = AD742B482CF5712900F34DBE /* Swither.app */;
@@ -216,6 +227,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				AD742BAF2CF923F400F34DBE /* XCRemoteSwiftPackageReference "Toast-Swift" */,
+				AD742BBF2CFA67F200F34DBE /* XCRemoteSwiftPackageReference "SkeletonView" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = AD742B492CF5712900F34DBE /* Products */;
@@ -586,6 +598,14 @@
 				minimumVersion = 5.1.1;
 			};
 		};
+		AD742BBF2CFA67F200F34DBE /* XCRemoteSwiftPackageReference "SkeletonView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Juanpe/SkeletonView";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.31.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -593,6 +613,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = AD742BAF2CF923F400F34DBE /* XCRemoteSwiftPackageReference "Toast-Swift" */;
 			productName = Toast;
+		};
+		AD742BC12CFA68DF00F34DBE /* SkeletonView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AD742BBF2CFA67F200F34DBE /* XCRemoteSwiftPackageReference "SkeletonView" */;
+			productName = SkeletonView;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

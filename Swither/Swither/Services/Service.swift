@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Combine
 
 struct City {
     let lat: String
@@ -15,6 +16,20 @@ struct City {
 
 struct ServiceError: Error {
     let message: String
+}
+
+class Shared {
+    static let shared = Shared()
+    
+    var isLoading: Bool = true {
+        didSet {
+            NotificationCenter.default.post(name: .didChangeLoadingState, object: nil)
+        }
+    }
+}
+
+extension Notification.Name {
+    static let didChangeLoadingState = Notification.Name("didChangeLoadingState")
 }
 
 class Service {
@@ -38,6 +53,7 @@ class Service {
             guard let city = city else {
                 print("City not found")
                 completion(nil, nil)
+                Shared.shared.isLoading = false
                 return
             }
             
@@ -46,9 +62,11 @@ class Service {
                 
                 if let data = data {
                     completion(city, data)
+                    Shared.shared.isLoading = false
                     return
                 } else {
                     completion(nil, nil)
+                    Shared.shared.isLoading = false
                     return
                 }
             }

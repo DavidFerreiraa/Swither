@@ -1,6 +1,15 @@
 {
-  "originHash" : "c4ef298873d4eba9f1ca5cf47887f32407feae8dc11d5159d18fe8a8f586c4d5",
+  "originHash" : "e6307c94995ec41df6a1370d0c832c29984dd1e981742b8722fd045a3638be24",
   "pins" : [
+    {
+      "identity" : "skeletonview",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Juanpe/SkeletonView",
+      "state" : {
+        "revision" : "2f5274827d310e32c09325dd3e0007120940988e",
+        "version" : "1.31.0"
+      }
+    },
     {
       "identity" : "toast-swift",
       "kind" : "remoteSourceControl",

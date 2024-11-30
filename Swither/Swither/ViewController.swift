@@ -7,6 +7,7 @@
 
 import UIKit
 import Toast
+import SkeletonView
 
 class ViewController: UIViewController {
     private lazy var backgroundView: UIImageView = {
@@ -19,11 +20,15 @@ class ViewController: UIViewController {
     
     private lazy var topCardView: WeatherCardView = {
         let view = WeatherCardView()
+        view.isSkeletonable = true
+        view.skeletonCornerRadius = 20
         return view
     }()
     
     private lazy var humidityWindCardStackView: HumidityWindCardStackView = {
         let card = HumidityWindCardStackView()
+        card.isSkeletonable = true
+        card.skeletonCornerRadius = 20
         return card
     }()
     
@@ -39,11 +44,15 @@ class ViewController: UIViewController {
     
     private lazy var hourWeatherSection: WeatherSectionStackView = {
         let section = WeatherSectionStackView(label: "PREVISÕES DO DIA", child: dayWeatherCollectionView)
+        section.isSkeletonable = true
+        section.skeletonCornerRadius = 20
         return section
     }()
     
     private lazy var dayWeatherSection: WeatherSectionStackView = {
         let section = WeatherSectionStackView(label: "PRÓXIMOS DIAS", child: dayWeatherTableView)
+        section.isSkeletonable = true
+        section.skeletonCornerRadius = 20
         return section
     }()
     
@@ -93,6 +102,27 @@ class ViewController: UIViewController {
     private func setupView() {
         setHierarchy()
         setConstraints()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(updateSkeletonState), name: .didChangeLoadingState, object: nil)
+        
+        // initial skeleton state
+        updateSkeletonState()
+    }
+    
+    @objc private func updateSkeletonState() {
+        if Shared.shared.isLoading {
+            topCardView.showAnimatedGradientSkeleton(transition: .crossDissolve(0.2))
+            humidityWindCardStackView.showAnimatedGradientSkeleton(transition: .crossDissolve(0.2))
+            dayWeatherSection.showAnimatedGradientSkeleton(transition: .crossDissolve(0.2))
+            hourWeatherSection.showAnimatedGradientSkeleton(transition: .crossDissolve(0.2))
+        } else {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2){
+                self.topCardView.hideSkeleton()
+                self.humidityWindCardStackView.hideSkeleton()
+                self.dayWeatherSection.hideSkeleton()
+                self.hourWeatherSection.hideSkeleton()
+            }
+        }
     }
     
     private func setHierarchy() { //method to define the hierarchy of views into the ViewController
