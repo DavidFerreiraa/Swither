@@ -10,6 +10,8 @@ import Toast
 import SkeletonView
 
 class ViewController: UIViewController {
+    private let viewModel = WeatherViewModel()
+    
     private lazy var backgroundView: UIImageView = {
         let imageView = UIImageView(frame: .zero)
         imageView.image = UIImage(named: "background")
@@ -56,47 +58,35 @@ class ViewController: UIViewController {
         return section
     }()
     
-    private let service = Service()
-    private var forecastResponse: OpenWeatherResponse?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        if (service.apiKey.isEmpty) {
-            self.view.makeToast("No such API key", duration: 3.0, position: .bottom)
-        }
-        
-        service.fetchDataByCurrentLocation {
-            (city, response) in
-            guard let response else {
-                self.view.makeToast("Can't fetch data", duration: 3.0, position: .bottom)
-                return
-            }
-            
-            guard let city else {
-                self.view.makeToast("Can't fetch data", duration: 3.0, position: .bottom)
-                return
-            }
-            
-            DispatchQueue.main.async {
-                self.loadData(city: city, response: response)
-            }
-        }
-        
+        fetchWeatherData()
         setupView()
     }
     
-    private func loadData(city: City, response: OpenWeatherResponse) {
-        // Ensure UI updates happen on the main thread
-        self.topCardView.cityName = city.name
-        self.topCardView.temperature = response.current.temp.tempToString()
-        self.humidityWindCardStackView.humidity = response.current.humidity.humidityToString()
-        self.humidityWindCardStackView.wind = response.current.windSpeed.windSpeedToString()
-        self.dayWeatherCollectionView.data = response.hourly
-        self.dayWeatherTableView.data = response.daily
+    private func fetchWeatherData() {
+        viewModel.fetchWeatherData { [weak self] error in
+            guard let self else { return }
+            if let error = error {
+                self.view.makeToast(error, duration: 3.0, position: .bottom)
+            } else {
+                DispatchQueue.main.async {
+                    self.loadData()
+                }
+            }
+        }
+    }
+    
+    private func loadData() {
+        topCardView.cityName = viewModel.cityName
+        topCardView.temperature = viewModel.temperature
+        humidityWindCardStackView.humidity = viewModel.humidity
+        humidityWindCardStackView.wind = viewModel.wind
+        dayWeatherCollectionView.data = viewModel.hourlyForecast
+        dayWeatherTableView.data = viewModel.dailyForecast
         
-        self.dayWeatherCollectionView.reloadData()
-        self.dayWeatherTableView.reloadData()
+        dayWeatherCollectionView.reloadData()
+        dayWeatherTableView.reloadData()
     }
     
     private func setupView() {
@@ -110,7 +100,7 @@ class ViewController: UIViewController {
     }
     
     @objc private func updateSkeletonState() {
-        if Shared.shared.isLoading {
+        if viewModel.isLoading {
             topCardView.showAnimatedGradientSkeleton(transition: .crossDissolve(0.2))
             humidityWindCardStackView.showAnimatedGradientSkeleton(transition: .crossDissolve(0.2))
             dayWeatherSection.showAnimatedGradientSkeleton(transition: .crossDissolve(0.2))

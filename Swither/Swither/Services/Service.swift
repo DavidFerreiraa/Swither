@@ -6,26 +6,9 @@
 //
 
 import Foundation
-import Combine
-
-struct City {
-    let lat: String
-    let lon: String
-    let name: String
-}
 
 struct ServiceError: Error {
     let message: String
-}
-
-class Shared {
-    static let shared = Shared()
-    
-    var isLoading: Bool = true {
-        didSet {
-            NotificationCenter.default.post(name: .didChangeLoadingState, object: nil)
-        }
-    }
 }
 
 extension Notification.Name {
@@ -53,20 +36,17 @@ class Service {
             guard let city = city else {
                 print("City not found")
                 completion(nil, nil)
-                Shared.shared.isLoading = false
                 return
             }
             
             fetchData(city: city) { [weak self] data in
-                guard let self = self else {return}
+                guard let _ = self else {return}
                 
                 if let data = data {
                     completion(city, data)
-                    Shared.shared.isLoading = false
                     return
                 } else {
                     completion(nil, nil)
-                    Shared.shared.isLoading = false
                     return
                 }
             }
@@ -103,73 +83,4 @@ func getApiKey() throws -> String {
         throw ServiceError(message: "No such API key")
     }
     return apiKey
-}
-
-// MARK: - OpenWeatherResponse
-struct OpenWeatherResponse: Codable {
-    let lat, lon: Double
-    let timezone: String
-    let timezoneOffset: Int
-    let current: Current
-    let minutely: [Minutely]?
-    let hourly: [Current]
-    let daily: [Daily]
-
-    enum CodingKeys: String, CodingKey {
-        case lat, lon, timezone
-        case timezoneOffset = "timezone_offset"
-        case current, minutely, hourly, daily
-    }
-}
-
-// MARK: - Current
-struct Current: Codable {
-    let dt: Int
-    let temp: Double
-    let humidity: Int
-    let windSpeed: Double
-    let weather: [Weather]
-
-    enum CodingKeys: String, CodingKey {
-        case dt, temp
-        case humidity
-        case windSpeed = "wind_speed"
-        case weather
-    }
-}
-
-// MARK: - Weather
-struct Weather: Codable {
-    let id: Int
-    let main: String
-    let description: String
-    let icon: String
-}
-
-// MARK: - Daily
-struct Daily: Codable {
-    let dt: Int
-    let temp: Temp
-    let humidity: Int
-    let windSpeed: Double
-    let weather: [Weather]
-
-    enum CodingKeys: String, CodingKey {
-        case dt
-        case temp
-        case humidity
-        case windSpeed = "wind_speed"
-        case weather
-    }
-}
-
-// MARK: - Temp
-struct Temp: Codable {
-    let day, min, max, night: Double
-    let eve, morn: Double
-}
-
-// MARK: - Minutely
-struct Minutely: Codable {
-    let dt, precipitation: Double
 }
