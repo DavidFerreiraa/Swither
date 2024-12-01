@@ -12,6 +12,23 @@ import SkeletonView
 class ViewController: UIViewController {
     private let viewModel = WeatherViewModel()
     
+    // MARK: SkeletonViews for the application
+    private lazy var hourWeatherSectionSkeletonView: UIView = {
+        return UIView().skeleton()
+    }()
+    
+    private lazy var dayWeatherSectionSkeletonView: UIView = {
+        return UIView().skeleton()
+    }()
+    
+    private lazy var topCardSkeletonView: UIView = {
+        return UIView().skeleton()
+    }()
+    
+    private lazy var humidityWindCardStackSkeletonView: UIView = {
+        return UIView().skeleton(cornerRadius:10)
+    }()
+    
     private lazy var backgroundView: UIImageView = {
         let imageView = UIImageView(frame: .zero)
         imageView.image = UIImage(named: "background")
@@ -22,15 +39,11 @@ class ViewController: UIViewController {
     
     private lazy var topCardView: WeatherCardView = {
         let view = WeatherCardView()
-        view.isSkeletonable = true
-        view.skeletonCornerRadius = 20
         return view
     }()
     
     private lazy var humidityWindCardStackView: HumidityWindCardStackView = {
         let card = HumidityWindCardStackView()
-        card.isSkeletonable = true
-        card.skeletonCornerRadius = 20
         return card
     }()
     
@@ -46,33 +59,28 @@ class ViewController: UIViewController {
     
     private lazy var hourWeatherSection: WeatherSectionStackView = {
         let section = WeatherSectionStackView(label: "PREVISÕES DO DIA", child: dayWeatherCollectionView)
-        section.isSkeletonable = true
-        section.skeletonCornerRadius = 20
         return section
     }()
     
     private lazy var dayWeatherSection: WeatherSectionStackView = {
         let section = WeatherSectionStackView(label: "PRÓXIMOS DIAS", child: dayWeatherTableView)
-        section.isSkeletonable = true
-        section.skeletonCornerRadius = 20
         return section
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchWeatherData()
         setupView()
     }
     
-    private func fetchWeatherData() {
+    private func fetchWeatherData(completion: @escaping () -> Void) {
         viewModel.fetchWeatherData { [weak self] error in
             guard let self else { return }
             if let error = error {
-                self.view.makeToast(error, duration: 3.0, position: .bottom)
-            } else {
                 DispatchQueue.main.async {
-                    self.loadData()
+                    self.view.makeToast(error, duration: 3.0, position: .bottom)
                 }
+            } else {
+                completion()
             }
         }
     }
@@ -90,8 +98,19 @@ class ViewController: UIViewController {
     }
     
     private func setupView() {
-        setHierarchy()
-        setConstraints()
+        setupSkeletonView()
+        fetchWeatherData() {
+            DispatchQueue.main.async {
+                self.setHierarchy()
+                self.setConstraints()
+                self.loadData()
+            }
+        }
+    }
+    
+    private func setupSkeletonView() {
+        setSkeletonHierarchy()
+        setSkeletonConstraints()
         
         NotificationCenter.default.addObserver(self, selector: #selector(updateSkeletonState), name: .didChangeLoadingState, object: nil)
         
@@ -101,36 +120,38 @@ class ViewController: UIViewController {
     
     @objc private func updateSkeletonState() {
         if viewModel.isLoading {
-            topCardView.showAnimatedGradientSkeleton(transition: .crossDissolve(0.2))
-            humidityWindCardStackView.showAnimatedGradientSkeleton(transition: .crossDissolve(0.2))
-            dayWeatherSection.showAnimatedGradientSkeleton(transition: .crossDissolve(0.2))
-            hourWeatherSection.showAnimatedGradientSkeleton(transition: .crossDissolve(0.2))
+            DispatchQueue.main.async {
+                self.topCardSkeletonView.showAnimatedGradientSkeleton(transition: .crossDissolve(0.2))
+                self.humidityWindCardStackSkeletonView.showAnimatedGradientSkeleton(transition: .crossDissolve(0.2))
+                self.dayWeatherSectionSkeletonView.showAnimatedGradientSkeleton(transition: .crossDissolve(0.2))
+                self.hourWeatherSectionSkeletonView.showAnimatedGradientSkeleton(transition: .crossDissolve(0.2))
+            }
         } else {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2){
-                self.topCardView.hideSkeleton()
-                self.humidityWindCardStackView.hideSkeleton()
-                self.dayWeatherSection.hideSkeleton()
-                self.hourWeatherSection.hideSkeleton()
+            DispatchQueue.main.async {
+                self.topCardSkeletonView.hideSkeleton()
+                self.humidityWindCardStackSkeletonView.hideSkeleton()
+                self.dayWeatherSectionSkeletonView.hideSkeleton()
+                self.hourWeatherSectionSkeletonView.hideSkeleton()
             }
         }
     }
     
     private func setHierarchy() { //method to define the hierarchy of views into the ViewController
-        view.addSubview(backgroundView)
         view.addSubview(topCardView)
         view.addSubview(humidityWindCardStackView)
         view.addSubview(hourWeatherSection)
         view.addSubview(dayWeatherSection)
     }
     
+    private func setSkeletonHierarchy() {
+        view.addSubview(backgroundView)
+        view.addSubview(topCardSkeletonView)
+        view.addSubview(humidityWindCardStackSkeletonView)
+        view.addSubview(hourWeatherSectionSkeletonView)
+        view.addSubview(dayWeatherSectionSkeletonView)
+    }
+    
     private func setConstraints() { //method to define constraints
-        NSLayoutConstraint.activate([
-                backgroundView.topAnchor.constraint(equalTo: view.topAnchor),
-                backgroundView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-                backgroundView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-                backgroundView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-            ])
-            
             NSLayoutConstraint.activate([
                 topCardView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 60),
                 topCardView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 35),
@@ -166,6 +187,44 @@ class ViewController: UIViewController {
             NSLayoutConstraint.activate([
                 dayWeatherTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
             ])
+    }
+    
+    private func setSkeletonConstraints() {
+        NSLayoutConstraint.activate([
+            backgroundView.topAnchor.constraint(equalTo: view.topAnchor),
+            backgroundView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            backgroundView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            backgroundView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+        
+        NSLayoutConstraint.activate([
+            topCardSkeletonView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 60),
+            topCardSkeletonView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 35),
+            topCardSkeletonView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -35),
+            topCardSkeletonView.heightAnchor.constraint(equalToConstant: 169)
+        ])
+        
+        NSLayoutConstraint.activate([
+            humidityWindCardStackSkeletonView.widthAnchor.constraint(equalToConstant: 206),
+            humidityWindCardStackSkeletonView.heightAnchor.constraint(equalToConstant: 58),
+            humidityWindCardStackSkeletonView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            humidityWindCardStackSkeletonView.topAnchor.constraint(equalTo: topCardSkeletonView.bottomAnchor, constant: 24)
+        ])
+        
+        NSLayoutConstraint.activate([
+            hourWeatherSectionSkeletonView.heightAnchor.constraint(equalToConstant: 116),
+            hourWeatherSectionSkeletonView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            hourWeatherSectionSkeletonView.topAnchor.constraint(equalTo: humidityWindCardStackSkeletonView.bottomAnchor, constant: 28),
+            hourWeatherSectionSkeletonView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 35),
+            hourWeatherSectionSkeletonView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -35)
+        ])
+        
+        NSLayoutConstraint.activate([
+            dayWeatherSectionSkeletonView.topAnchor.constraint(equalTo: hourWeatherSectionSkeletonView.bottomAnchor, constant: 32),
+            dayWeatherSectionSkeletonView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 35),
+            dayWeatherSectionSkeletonView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -35),
+            dayWeatherSectionSkeletonView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+        ])
     }
 }
 

@@ -26,7 +26,6 @@ class WeatherViewModel {
         isLoading = true
         service.fetchDataByCurrentLocation { [weak self] city, response in
             guard let self else { return }
-            
             if let city = city, let response = response {
                 self.cityName = city.name
                 self.temperature = response.current.temp.tempToString()

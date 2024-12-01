@@ -30,7 +30,6 @@ class Service {
     
     func fetchDataByCurrentLocation(_ completion: @escaping (City?, OpenWeatherResponse?) -> Void) {
         LocationService.shared.getCityName { [weak self] city in
-            
             guard let self = self else {return}
             
             guard let city = city else {

@@ -17,4 +17,12 @@ extension UIView {
             self.trailingAnchor.constraint(equalTo: parent.trailingAnchor),
         ])
     }
+    
+    func skeleton(cornerRadius: Float = 20) -> UIView {
+        self.translatesAutoresizingMaskIntoConstraints = false
+        self.isSkeletonable = true
+        self.skeletonCornerRadius = cornerRadius
+        self.layer.zPosition = 10
+        return self
+    }
 }
