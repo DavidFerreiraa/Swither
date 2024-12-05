@@ -1,0 +1,629 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AD742BB12CF923F400F34DBE /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = AD742BB02CF923F400F34DBE /* Toast */; };
+		AD742BC22CFA68DF00F34DBE /* SkeletonView in Frameworks */ = {isa = PBXBuildFile; productRef = AD742BC12CFA68DF00F34DBE /* SkeletonView */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AD742B5F2CF5712B00F34DBE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AD742B402CF5712900F34DBE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AD742B472CF5712900F34DBE;
+			remoteInfo = Swither;
+		};
+		AD742B692CF5712B00F34DBE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AD742B402CF5712900F34DBE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AD742B472CF5712900F34DBE;
+			remoteInfo = Swither;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		AD742B482CF5712900F34DBE /* Swither.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Swither.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD742B5E2CF5712B00F34DBE /* SwitherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwitherTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD742B682CF5712B00F34DBE /* SwitherUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwitherUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		AD742B702CF5712B00F34DBE /* Exceptions for "Swither" folder in "Swither" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = AD742B472CF5712900F34DBE /* Swither */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		AD742B4A2CF5712900F34DBE /* Swither */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				AD742B702CF5712B00F34DBE /* Exceptions for "Swither" folder in "Swither" target */,
+			);
+			path = Swither;
+			sourceTree = "<group>";
+		};
+		AD742B612CF5712B00F34DBE /* SwitherTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = SwitherTests;
+			sourceTree = "<group>";
+		};
+		AD742B6B2CF5712B00F34DBE /* SwitherUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = SwitherUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AD742B452CF5712900F34DBE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AD742BC22CFA68DF00F34DBE /* SkeletonView in Frameworks */,
+				AD742BB12CF923F400F34DBE /* Toast in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AD742B5B2CF5712B00F34DBE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AD742B652CF5712B00F34DBE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AD742B3F2CF5712900F34DBE = {
+			isa = PBXGroup;
+			children = (
+				AD742B4A2CF5712900F34DBE /* Swither */,
+				AD742B612CF5712B00F34DBE /* SwitherTests */,
+				AD742B6B2CF5712B00F34DBE /* SwitherUITests */,
+				AD742BC02CFA68DF00F34DBE /* Frameworks */,
+				AD742B492CF5712900F34DBE /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AD742B492CF5712900F34DBE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AD742B482CF5712900F34DBE /* Swither.app */,
+				AD742B5E2CF5712B00F34DBE /* SwitherTests.xctest */,
+				AD742B682CF5712B00F34DBE /* SwitherUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AD742BC02CFA68DF00F34DBE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AD742B472CF5712900F34DBE /* Swither */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AD742B712CF5712B00F34DBE /* Build configuration list for PBXNativeTarget "Swither" */;
+			buildPhases = (
+				AD742B442CF5712900F34DBE /* Sources */,
+				AD742B452CF5712900F34DBE /* Frameworks */,
+				AD742B462CF5712900F34DBE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				AD742B4A2CF5712900F34DBE /* Swither */,
+			);
+			name = Swither;
+			packageProductDependencies = (
+				AD742BB02CF923F400F34DBE /* Toast */,
+				AD742BC12CFA68DF00F34DBE /* SkeletonView */,
+			);
+			productName = Swither;
+			productReference = AD742B482CF5712900F34DBE /* Swither.app */;
+			productType = "com.apple.product-type.application";
+		};
+		AD742B5D2CF5712B00F34DBE /* SwitherTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AD742B762CF5712B00F34DBE /* Build configuration list for PBXNativeTarget "SwitherTests" */;
+			buildPhases = (
+				AD742B5A2CF5712B00F34DBE /* Sources */,
+				AD742B5B2CF5712B00F34DBE /* Frameworks */,
+				AD742B5C2CF5712B00F34DBE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AD742B602CF5712B00F34DBE /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				AD742B612CF5712B00F34DBE /* SwitherTests */,
+			);
+			name = SwitherTests;
+			packageProductDependencies = (
+			);
+			productName = SwitherTests;
+			productReference = AD742B5E2CF5712B00F34DBE /* SwitherTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		AD742B672CF5712B00F34DBE /* SwitherUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AD742B792CF5712B00F34DBE /* Build configuration list for PBXNativeTarget "SwitherUITests" */;
+			buildPhases = (
+				AD742B642CF5712B00F34DBE /* Sources */,
+				AD742B652CF5712B00F34DBE /* Frameworks */,
+				AD742B662CF5712B00F34DBE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AD742B6A2CF5712B00F34DBE /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				AD742B6B2CF5712B00F34DBE /* SwitherUITests */,
+			);
+			name = SwitherUITests;
+			packageProductDependencies = (
+			);
+			productName = SwitherUITests;
+			productReference = AD742B682CF5712B00F34DBE /* SwitherUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AD742B402CF5712900F34DBE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1600;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					AD742B472CF5712900F34DBE = {
+						CreatedOnToolsVersion = 16.0;
+					};
+					AD742B5D2CF5712B00F34DBE = {
+						CreatedOnToolsVersion = 16.0;
+						TestTargetID = AD742B472CF5712900F34DBE;
+					};
+					AD742B672CF5712B00F34DBE = {
+						CreatedOnToolsVersion = 16.0;
+						TestTargetID = AD742B472CF5712900F34DBE;
+					};
+				};
+			};
+			buildConfigurationList = AD742B432CF5712900F34DBE /* Build configuration list for PBXProject "Swither" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AD742B3F2CF5712900F34DBE;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				AD742BAF2CF923F400F34DBE /* XCRemoteSwiftPackageReference "Toast-Swift" */,
+				AD742BBF2CFA67F200F34DBE /* XCRemoteSwiftPackageReference "SkeletonView" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = AD742B492CF5712900F34DBE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AD742B472CF5712900F34DBE /* Swither */,
+				AD742B5D2CF5712B00F34DBE /* SwitherTests */,
+				AD742B672CF5712B00F34DBE /* SwitherUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AD742B462CF5712900F34DBE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AD742B5C2CF5712B00F34DBE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AD742B662CF5712B00F34DBE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AD742B442CF5712900F34DBE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AD742B5A2CF5712B00F34DBE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AD742B642CF5712B00F34DBE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AD742B602CF5712B00F34DBE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AD742B472CF5712900F34DBE /* Swither */;
+			targetProxy = AD742B5F2CF5712B00F34DBE /* PBXContainerItemProxy */;
+		};
+		AD742B6A2CF5712B00F34DBE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AD742B472CF5712900F34DBE /* Swither */;
+			targetProxy = AD742B692CF5712B00F34DBE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		AD742B722CF5712B00F34DBE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = LW47DGHUK9;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Swither/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
+				"IPHONEOS_DEPLOYMENT_TARGET[sdk=iphoneos*]" = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nozer.Swither;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		AD742B732CF5712B00F34DBE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = LW47DGHUK9;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Swither/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
+				"IPHONEOS_DEPLOYMENT_TARGET[sdk=iphoneos*]" = 17.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nozer.Swither;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		AD742B742CF5712B00F34DBE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		AD742B752CF5712B00F34DBE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AD742B772CF5712B00F34DBE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = LW47DGHUK9;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nozer.SwitherTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Swither.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Swither";
+			};
+			name = Debug;
+		};
+		AD742B782CF5712B00F34DBE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = LW47DGHUK9;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nozer.SwitherTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Swither.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Swither";
+			};
+			name = Release;
+		};
+		AD742B7A2CF5712B00F34DBE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = LW47DGHUK9;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nozer.SwitherUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Swither;
+			};
+			name = Debug;
+		};
+		AD742B7B2CF5712B00F34DBE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = LW47DGHUK9;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nozer.SwitherUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Swither;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AD742B432CF5712900F34DBE /* Build configuration list for PBXProject "Swither" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AD742B742CF5712B00F34DBE /* Debug */,
+				AD742B752CF5712B00F34DBE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AD742B712CF5712B00F34DBE /* Build configuration list for PBXNativeTarget "Swither" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AD742B722CF5712B00F34DBE /* Debug */,
+				AD742B732CF5712B00F34DBE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AD742B762CF5712B00F34DBE /* Build configuration list for PBXNativeTarget "SwitherTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AD742B772CF5712B00F34DBE /* Debug */,
+				AD742B782CF5712B00F34DBE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AD742B792CF5712B00F34DBE /* Build configuration list for PBXNativeTarget "SwitherUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AD742B7A2CF5712B00F34DBE /* Debug */,
+				AD742B7B2CF5712B00F34DBE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		AD742BAF2CF923F400F34DBE /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scalessec/Toast-Swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.1.1;
+			};
+		};
+		AD742BBF2CFA67F200F34DBE /* XCRemoteSwiftPackageReference "SkeletonView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Juanpe/SkeletonView";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.31.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		AD742BB02CF923F400F34DBE /* Toast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AD742BAF2CF923F400F34DBE /* XCRemoteSwiftPackageReference "Toast-Swift" */;
+			productName = Toast;
+		};
+		AD742BC12CFA68DF00F34DBE /* SkeletonView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AD742BBF2CFA67F200F34DBE /* XCRemoteSwiftPackageReference "SkeletonView" */;
+			productName = SkeletonView;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = AD742B402CF5712900F34DBE /* Project object */;
+}
